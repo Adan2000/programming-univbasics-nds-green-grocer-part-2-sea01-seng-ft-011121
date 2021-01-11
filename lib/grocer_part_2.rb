@@ -1,25 +1,22 @@
 require_relative './part_1_solution.rb'
 
+
+
+
+
+
+
+
 def apply_coupons(cart, coupons)
-  coupon_cart = []
   cart.each do |cart_item|
     coupons.each do |coupon_item|
      if cart_item[:item] == coupon_item[:item] && cart_item[:count] >= coupon_item[:num]
-      discounted_item = {:item => "#{cart_item[:item]} W/COUPON", :price => coupon_item[:cost] / coupon_item[:num], :clearance => cart_item[:clearance], :count => coupon_item[:num]}
-      cart_item[:count] = cart_item[:count] - coupon_item[:num]
-      if  cart_item[:count] > 0
-        remainder_item = {:item =>
-
-
-
-
-
-
-def apply_coupons(cart, coupons)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This method **should** update cart
-  
+      cart.push({:item => "#{cart_item[:item]} W/COUPON", :price => coupon_item[:cost] / coupon_item[:num], :clearance => cart_item[:clearance], :count => coupon_item[:num]})
+      cart_item[:count] -= coupon_item[:num]
+     end
+    end
+  end
+  cart
 end
 
 
